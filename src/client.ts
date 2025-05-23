@@ -5,7 +5,7 @@ import { ListToolsResultSchema } from '@modelcontextprotocol/sdk/types.js';
 async function main() {
   const transport = new StdioClientTransport({
     command: 'node',
-    args: ['./build/server.js'],
+    args: ['./build/server.js', '--MOCK_ACCESS_TOKEN', 'mockAccessToken'],
   });
 
   const client = new Client({

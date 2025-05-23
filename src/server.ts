@@ -3,6 +3,7 @@
 import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
+import { getEnvVar } from './utils/get-env-vars';
 
 // Create an MCP server
 const server = new McpServer({
@@ -33,12 +34,11 @@ server.tool(
     text: z.string(),
   },
   async ({ text }) => {
-    const mockAccessToken = process.env.MOCK_ACCESS_TOKEN;
     return {
       content: [
         {
           type: 'text',
-          text: String(`${text} world, env.MOCK_ACCESS_TOKEN: ${mockAccessToken}}`),
+          text: String(`${text} world, env.MOCK_ACCESS_TOKEN: ${getEnvVar('MOCK_ACCESS_TOKEN')}}`),
         },
       ],
     };
