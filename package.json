@@ -1,0 +1,37 @@
+{
+  "name": "mcp-helloworld",
+  "version": "1.0.0",
+  "description": "mcp server example",
+  "main": "build/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && shx chmod +x build/*.js",
+    "prepare": "npm run build",
+    "watch": "tsc --watch",
+    "client": "node ./build/client.js",
+    "client:http": "node ./build/client-http.js",
+    "server": "node ./build/server.js",
+    "server:inspector": "npm run build && npx @modelcontextprotocol/inspector build/server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.11.0",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-node": "^0.3.9",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-perfectionist": "^4.2.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3",
+    "shx": "^0.4.0",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  }
+}
