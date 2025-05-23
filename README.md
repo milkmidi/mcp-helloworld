@@ -17,27 +17,46 @@ Node.js server implementing Model Context Protocol (MCP) for "HelloWorld".
     - `weightKg` (number): Weight
     - `heightM` (number): heightM
 
-## Build
-Docker build:
-
+#### Using Node.js
+1. Build
 ```bash
-docker build -t pg-mcp/helloworld .
+npm run build
 ```
 
-### Docker
+2. Add the following configuration to your AI platform settings:
 ```json
 {
-  "pg-mcp-server-hello": {
+  "mcp-helloworld": {
+    "name": "mcp-helloworld",
+    "protocol": "stdio",
+    "command": "node",
+    "args": [
+      "path/mcp-helloworld/build/index.js",
+      "--MOCK_ACCESS_TOKEN",
+      "<YOUR_MOCK_TOKEN>"
+    ]
+  }
+}
+```
+
+
+#### Using Docker
+1. Build the container image:
+```bash
+docker build -t mcp-helloworld .
+```
+
+2. Add the following configuration to your AI platform settings:
+```json
+{
+  "mcp-hello": {
     "command": "docker",
     "args": [
       "run",
       "-i",
       "--rm",
       "-e",
-      "MOCK_ACCESS_TOKEN",
-      "-v",
-      "{Your_local_path}:/config",
-      "pg-mcp/helloworld"
+      "MOCK_ACCESS_TOKEN"
     ],
     "env": {
       "MOCK_ACCESS_TOKEN": "<YOUR_MOCK_TOKEN>"
