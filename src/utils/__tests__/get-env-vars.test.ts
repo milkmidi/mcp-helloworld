@@ -1,4 +1,5 @@
-import { getEnvVar } from './get-env-vars';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { getEnvVar } from '../get-env-vars';
 
 describe('getEnvVar', () => {
   const originalEnv = process.env;
