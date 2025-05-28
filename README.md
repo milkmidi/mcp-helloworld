@@ -32,8 +32,7 @@ npm run build
     "command": "node",
     "args": [
       "path/mcp-helloworld/build/index.js",
-      "--MOCK_ACCESS_TOKEN",
-      "<YOUR_MOCK_TOKEN>"
+      "--mock-access-token=YOUR-MOCK-TOKEN",
     ]
   }
 }

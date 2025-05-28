@@ -7,13 +7,13 @@ const toKebabCase = (str: string) => {
     .toLowerCase();
 };
 
-export const getEnvVar = (name: string) => {
-  const value = process.env[name];
+export const getEnvVar = <T extends Record<string, string | number | boolean>>(name: keyof T) => {
+  const value = process.env[String(name)];
   if (value) {
     return value;
   }
   const args = process.argv.slice(2);
-  const kebabCaseName = toKebabCase(name);
+  const kebabCaseName = toKebabCase(String(name));
   // Check for command line arguments
   const envVar = args.find((arg) => arg.startsWith(`--${kebabCaseName}=`));
   if (envVar) {

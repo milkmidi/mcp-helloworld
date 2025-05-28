@@ -1,6 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { getEnvVar } from '../get-env-vars';
 
+type EnvVars = {
+  TEST_ENV: string;
+};
 describe('getEnvVar', () => {
   const originalEnv = process.env;
   const originalArgv = process.argv;
@@ -17,7 +20,7 @@ describe('getEnvVar', () => {
 
   it('should return value from process.env', () => {
     process.env.TEST_ENV = 'envValue';
-    expect(getEnvVar('TEST_ENV')).toBe('envValue');
+    expect(getEnvVar<EnvVars>('TEST_ENV')).toBe('envValue');
   });
 
   it('should return value from command line argument with equals', () => {
